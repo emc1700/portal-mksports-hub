@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MK体育 · 杂志专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f6fa;
+            color: #1f2c3a;
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
+        }
+
+        /* hero 横幅 — 杂志风大标题区 */
+        .hero {
+            position: relative;
+            background: linear-gradient(145deg, #0b3b4f 0%, #145a6e 45%, #2a7f8f 100%);
+            border-radius: 2rem 2rem 2rem 2rem;
+            padding: 3.5rem 2.5rem 3rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px rgba(0, 40, 50, 0.18);
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: clamp(2.1rem, 7vw, 3.6rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: white;
+            line-height: 1.15;
+            max-width: 80%;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(2px);
+            padding: 0 0.2rem 0.1rem 0.4rem;
+            border-radius: 0.3em;
+            color: #d1f0f5;
+        }
+
+        .hero .sub {
+            margin-top: 1.2rem;
+            font-size: 1.1rem;
+            color: #c7e6ef;
+            max-width: 540px;
+            border-left: 3px solid #54bfd4;
+            padding-left: 1rem;
+        }
+
+        /* 网格卡片系统 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .card-wide {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 8px 20px rgba(38, 84, 94, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(80, 160, 175, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(29, 79, 92, 0.12);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #124652;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2 i {
+            display: inline-block;
+            width: 1.4rem;
+            height: 1.4rem;
+            background: #2b889b;
+            border-radius: 0.3rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #dcf2f7;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #145a6e;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: #2c3f4b;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accent-link {
+            color: #166c80;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #7ac2d2;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .accent-link:hover {
+            color: #084652;
+            border-bottom-color: #084652;
+        }
+
+        /* 强调装饰 */
+        .highlight-box {
+            background: #e3f2f6;
+            padding: 1.2rem 1.4rem;
+            border-radius: 1.2rem;
+            margin: 1.2rem 0 0.2rem;
+            border-left: 4px solid #3babbd;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-mini {
+            margin-top: 1rem;
+            border-top: 1px dashed #b4d7e0;
+            padding-top: 1rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #145a6e;
+            cursor: pointer;
+            padding: 0.3rem 0;
+        }
+
+        .faq-mini summary::marker {
+            color: #3babbd;
+        }
+
+        .faq-mini details p {
+            margin-left: 0.8rem;
+            padding: 0.3rem 0 0.2rem;
+            color: #2e4a57;
+        }
+
+        /* 页尾 */
+        .page-footer {
+            margin-top: 3rem;
+            padding: 1.8rem 1.5rem;
+            background: #dcecf1;
+            border-radius: 1.8rem;
+            text-align: center;
+            color: #1b4c5a;
+            border: 1px solid #b7d7e0;
+        }
+
+        .page-footer .footer-note {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 0.3rem;
+        }
+
+        .page-footer .tiny {
+            font-size: 0.85rem;
+            color: #3d6979;
+        }
+
+        .inline-link {
+            color: #105a6e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid #7abfcf;
+            padding-bottom: 0.05rem;
+        }
+
+        .inline-link:hover {
+            color: #083c4a;
+            border-bottom-color: #0a4555;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #c5dee6;
+            margin: 1.2rem 0;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2.2rem 1.4rem 2rem;
+                border-radius: 1.5rem;
+            }
+            .hero-title {
+                max-width: 95%;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 杂志式 hero 横幅 -->
+    <div class="hero">
+        <div class="hero-title">
+            <span>MK</span>体育 · 再发现
+        </div>
+        <div class="sub">
+            每一次回访，都是对优质内容的重新确认。<br>
+            收藏此刻，持续在场。
+        </div>
+    </div>
+
+    <!-- 三段式自然介绍 + 网格卡片 -->
+    <div class="grid-cards">
+
+        <!-- 卡片1：再次访问的视角（背景说明） -->
+        <div class="card">
+            <div class="tag">📌 回访 · 持续</div>
+            <h2>为什么再次打开？</h2>
+            <p>体育资讯与赛事数据流动极快，一个值得信赖的聚合点并不容易找到。许多用户在一段时间后选择重新访问 <a href="https://portal--mksports.com" class="accent-link">MK体育</a>，并非因为信息爆炸，而是因为这里的信息筛选方式保持了一贯的专业度与清晰度。从联赛深度数据到运动员动态，从战术分析到实时比分，结构化的呈现让回访者能迅速找到自己关注的板块，而不需要重新适应界面逻辑。</p>
+            <div class="highlight-box">
+                <p>⚡ 用户反馈中常见的一句话：「每次回来，界面逻辑还是那样顺手，但内容总有新鲜感。」这种平衡并非偶然，而是对信息架构长期打磨的结果。</p>
+            </div>
+        </div>
+
+        <!-- 卡片2：收藏的意义与场景 -->
+        <div class="card">
+            <div class="tag">⭐ 收藏 · 锚点</div>
+            <h2>收藏夹里的坐标</h2>
+            <p>把某个体育信息源加入收藏，往往意味着你认可它的长期价值。<a href="https://portal--mksports.com" class="accent-link">MK体育</a> 在移动端与桌面端都保持了统一的浏览体验——卡片式信息流、可自定义的关注列表、以及按联赛归类的赛事日历，这些细节让收藏行为变得实用而不只是心理安慰。当你需要快速确认赛程、回顾近期关键比赛结果，或是查阅特定球队的交锋记录，一个规整的收藏入口能节省大量重复搜索的时间。</p>
+            <p>尤其对于关注多个联赛的用户，将平台加入浏览器或系统书签后，每日的「信息检查」流程会变得简洁自然，不再需要从搜索引擎重新出发。</p>
+        </div>
+
+        <!-- 卡片3：持续关注与知识型视角（大卡片） -->
+        <div class="card card-wide">
+            <div class="tag">📚 专题 · 知识脉络</div>
+            <h2>从关注到理解</h2>
+            <p>单纯比分播报已经无法满足许多资深爱好者。如今，真正吸引长期用户的，是赛事背后的数据解读、球队阵型演变、以及转会市场逻辑。MK体育 在这些维度上逐步构建了自己的内容深度：每轮联赛结束后，不仅提供结果汇总，还会附加关键战术节点分析（如压迫区域、预期进球、控球转换率等）。这种内容编排，让「持续关注」不再只停留在比分刷新，而变成一种知识积累。</p>
+            <p>过去三个月，平台上关于战术趋势的长文阅读量增长了约37%，其中很大一部分来自重复访问者。这印证了一个趋势：当体育平台开始提供「可积累的信息」，用户就会主动建立回访习惯。而收藏与再次访问，正是这种习惯在浏览器层面的自然投射。</p>
+
+            <hr>
+
+            <!-- 嵌入式FAQ摘要 —— 杂志常见模块 -->
+            <div class="faq-mini">
+                <details>
+                    <summary>为什么选择「收藏」比临时搜索更高效？</summary>
+                    <p>临时搜索往往受到关键词偏差、广告内容干扰等因素影响，而直接访问已收藏的 <a href="https://portal--mksports.com" class="accent-link">MK体育</a> 可以避开信息噪音，直达结构化的体育内容索引。尤其对于赛前快速查阅首发名单或实时赔率变动，收藏夹能节省30%以上的时间成本。</p>
+                </details>
+                <details>
+                    <summary>内容更新节奏如何？</summary>
+                    <p>日常赛事数据在比赛结束后15分钟内完成结构化录入；深度分析文章每周更新3–5篇，覆盖主流联赛与部分二级联赛。此外，赛季关键窗口期（转会窗、杯赛淘汰阶段）会推出专题系列。</p>
+                </details>
+                <details>
+                    <summary>移动端收藏体验与桌面端有差异吗？</summary>
+                    <p>核心信息架构保持一致。移动端针对小屏优化了卡片间距与触摸热区，同时保留了「长按收藏」和「快速跳转至上次浏览位置」的功能。无论是使用手机浏览器还是平板，书签体验都经过专门适配。</p>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页尾：访问提示 + 自然呼吁 -->
+    <div class="page-footer">
+        <div class="footer-note">
+            🌐 如果你已经有一段时间没有访问，不妨重新打开收藏夹或输入网址。<br>
+            信息架构没有变，但内容已经在迭代。<br>
+            前往 <a href="https://portal--mksports.com" class="inline-link">MK体育</a> 查看最新专题与赛事数据。
+        </div>
+        <div class="tiny">
+            杂志专题 · 第 022 期 · 基于回访与收藏的视角
+        </div>
+    </div>
+
+    <!-- 隐式保留创作种子（仅用于变化，不显示） -->
+    <!-- cd95f76018299789 -->
+
+</div>
+</body>
+</html>
