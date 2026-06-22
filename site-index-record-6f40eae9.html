@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>资料索引｜MK体育信息整理</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f6f8fb;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1727 0%, #1f2e42 100%);
+      color: #e6edf5;
+      padding: 3.5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(circle at 20% 30%, rgba(85, 140, 210, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #b6cdd9;
+      max-width: 640px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.7;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(72, 140, 210, 0.2);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #9bc0db;
+      border: 1px solid rgba(100, 170, 240, 0.25);
+      margin-top: 0.1rem;
+    }
+
+    /* 正文区浅色 */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.2rem 1.5rem 3.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 550;
+      border-left: 5px solid #2f6b9e;
+      padding-left: 0.9rem;
+      margin-bottom: 1.8rem;
+      color: #1c2b3f;
+    }
+
+    /* 卡片网格 — 信息卡片风格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid #e9eef3;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(0, 20, 40, 0.08);
+    }
+
+    .info-card.card-accent {
+      border-top: 4px solid #3c7bb3;
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1a2b40;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card h3 i {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #2f6b9e;
+      border-radius: 50%;
+    }
+
+    .info-card p {
+      color: #2d3e54;
+      font-size: 0.98rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .info-card li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.96rem;
+      color: #2e4059;
+    }
+
+    .info-card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #3c7bb3;
+      font-weight: 600;
+    }
+
+    .audience-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      margin: 0.5rem 0 0.3rem;
+    }
+
+    .audience-tag {
+      background: #eaf1f9;
+      color: #1f4068;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 450;
+    }
+
+    .link-paragraph {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.8rem;
+      margin: 1.8rem 0 2.5rem;
+      border: 1px solid #e1e9f0;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+    }
+
+    .link-paragraph p {
+      font-size: 1rem;
+      color: #1f3247;
+      margin-bottom: 0.6rem;
+    }
+
+    .link-paragraph a {
+      color: #2266aa;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #9bb9d8;
+      transition: color 0.15s, border-bottom-color 0.15s;
+    }
+
+    .link-paragraph a:hover {
+      color: #154579;
+      border-bottom-color: #154579;
+    }
+
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem 1.8rem;
+      border: 1px solid #e6edf5;
+      margin-top: 1.8rem;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px solid #edf2f8;
+      padding: 0.7rem 0;
+    }
+
+    .faq-mini details:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-mini summary {
+      font-weight: 530;
+      cursor: pointer;
+      color: #1b3250;
+      padding: 0.2rem 0;
+      font-size: 0.98rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini summary::before {
+      content: "▸";
+      display: inline-block;
+      width: 1.3rem;
+      color: #3c7bb3;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-mini .faq-answer {
+      padding: 0.5rem 0.2rem 0.8rem 1.3rem;
+      color: #2f405a;
+      font-size: 0.95rem;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6d7f95;
+      border-top: 1px solid #dce4ed;
+      padding-top: 2rem;
+    }
+
+    .footer-note a {
+      color: #2266aa;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #2266aa;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 2.5rem 1rem 3rem; }
+      .container { padding: 1.8rem 1rem 2.5rem; }
+      .section-title { font-size: 1.35rem; }
+      .card-grid { gap: 1.2rem; }
+      .info-card { padding: 1.4rem; }
+      .link-paragraph { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>资料整理 · 信息索引</h1>
+  <p class="sub">围绕 MK 体育相关资源的结构化梳理，帮助需要查阅、归纳或对比信息的人快速定位方向。</p>
+  <span class="tagline">基于公开信息 · 索引式呈现</span>
+</section>
+
+<div class="container">
+
+  <div class="section-title">用途卡片 · 常见信息场景</div>
+
+  <div class="card-grid">
+    <div class="info-card card-accent">
+      <h3><i></i> 资料归档与检索</h3>
+      <p>对于希望系统化整理体育类站点、平台信息的用户，提供一个可参考的索引节点。信息卡片按类别汇总，便于横向对比。</p>
+    </div>
+    <div class="info-card">
+      <h3><i></i> 信息预览与导航</h3>
+      <p>无需在多个页面之间反复跳转，通过卡片式摘要即可了解每类内容的大致覆盖方向，适合初步筛选和快速浏览。</p>
+    </div>
+    <div class="info-card">
+      <h3><i></i> 场景适配参考</h3>
+      <p>从日常资讯阅读到特定资料查找，不同使用习惯对应不同的信息组织方式。此处提供了其中一种结构，供按需取用。</p>
+    </div>
+  </div>
+
+  <!-- 适合人群区块 -->
+  <div class="section-title" style="margin-top: 0.4rem;">适合人群</div>
+
+  <div style="background: #ffffff; border-radius: 18px; padding: 1.6rem 1.8rem; margin-bottom: 1.8rem; border: 1px solid #e4ecf4;">
+    <div class="audience-list">
+      <span class="audience-tag">信息整理爱好者</span>
+      <span class="audience-tag">体育类网站研究者</span>
+      <span class="audience-tag">资料索引需求者</span>
+      <span class="audience-tag">浏览与对比用户</span>
+    </div>
+    <p style="margin-top: 1rem; color: #253c52; font-size: 0.98rem;">
+      无论你是在做内容归档、横向参考，还是想了解某一类体育信息的呈现方式，这个页面都可以作为起点。这里不提供深度的评测或推荐，只做信息层面的归纳与展示。
+    </p>
+  </div>
+
+  <!-- 自然链接段落（嵌入句子） -->
+  <div class="link-paragraph">
+    <p>如果你希望进一步了解体育资讯的索引结构或浏览相关的资料整理方式，可以查看 <a href="https://site-index-mksports.com">MK体育</a> 的信息聚合页面。该站点以内容归类为思路，帮助用户快速定位不同板块。</p>
+    <p style="margin-top: 0.6rem; margin-bottom: 0;">这种索引式的组织方式更适合需要系统性浏览而非随机点击的用户，同时也方便做资料收集和横向对比。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="section-title" style="margin-top: 1.2rem;">常见疑问摘要</div>
+  <div class="faq-mini">
+    <details>
+      <summary>这个页面和 MK体育 是什么关系？</summary>
+      <div class="faq-answer">这里是基于资料整理角度建立的介绍页面，不隶属于任何平台。内容仅为信息索引方向的展示，指向外部站点 <a href="https://site-index-mksports.com" style="color: #2266aa; text-decoration: underline; text-underline-offset: 2px;">MK体育</a> 作为参考对象。</div>
+    </details>
+    <details>
+      <summary>信息可靠吗？有主观推荐吗？</summary>
+      <div class="faq-answer">所有内容仅作客观归纳，不包含排名、评级或诱导性表述。建议根据自身需求进一步核实，此处仅提供索引思路。</div>
+    </details>
+    <details>
+      <summary>页面结构会变化吗？</summary>
+      <div class="faq-answer">不同浏览方向可能对应不同的信息卡片布局，本次侧重用途分类与人群适配。后续整理可能采用其他组织方式。</div>
+    </details>
+  </div>
+
+  <div class="footer-note">
+    <span>信息整理页面 · 仅作索引参考</span><br>
+    <span style="display: inline-block; margin-top: 0.5rem;">指向源站：<a href="https://site-index-mksports.com">MK体育</a>（资料整合方向）</span>
+  </div>
+
+</div>
+</body>
+</html>
